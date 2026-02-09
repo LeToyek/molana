@@ -1,18 +1,21 @@
 import { useEffect, useRef, useCallback } from 'react';
 import * as THREE from 'three';
 
-const TRAIL_COUNT = 5;
-const TRAIL_LENGTH = 80;
-const LERP_BASE = 0.08;
-const SWIRL_RADIUS = 0.15;
-const SWIRL_SPEED = 3.0;
+const TRAIL_COUNT = 7;
+const TRAIL_LENGTH = 40;
+const LERP_BASE = 0.12;
+const SWIRL_RADIUS = 0.12;
+const SWIRL_SPEED = 3.5;
 
+// Interpolated palette: Red → Orange → Yellow → Gold with greens/pinks for vibrancy
 const COLORS = [
-  new THREE.Color('#FF0000'),
-  new THREE.Color('#FFD700'),
-  new THREE.Color('#FF4D00'),
-  new THREE.Color('#FF2200'),
+  new THREE.Color('#FF0040'),
+  new THREE.Color('#FF3300'),
+  new THREE.Color('#FF6600'),
   new THREE.Color('#FFAA00'),
+  new THREE.Color('#FFD700'),
+  new THREE.Color('#00FF88'),
+  new THREE.Color('#FF00AA'),
 ];
 
 const KineticEnergyShader = () => {
@@ -53,28 +56,41 @@ const KineticEnergyShader = () => {
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute('position', new THREE.BufferAttribute(points, 3));
 
+      // Create a glow layer — two lines per trail for soft luminosity
       const material = new THREE.LineBasicMaterial({
         color: COLORS[i % COLORS.length],
         blending: THREE.AdditiveBlending,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.85,
         linewidth: 1,
       });
 
       const line = new THREE.Line(geometry, material);
       scene.add(line);
 
+      // Second glow pass — wider, dimmer for soft bloom
+      const glowMat = new THREE.LineBasicMaterial({
+        color: COLORS[i % COLORS.length],
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        opacity: 0.3,
+        linewidth: 1,
+      });
+      const glowLine = new THREE.Line(geometry, glowMat);
+      glowLine.scale.set(1.03, 1.03, 1);
+      scene.add(glowLine);
+
       trails.push({
         points,
         geometry,
         line,
         phase: (i / TRAIL_COUNT) * Math.PI * 2,
-        lerpFactor: LERP_BASE + i * 0.015,
+        lerpFactor: LERP_BASE + i * 0.012,
       });
     }
 
     // Glow particles
-    const particleCount = 60;
+    const particleCount = 120;
     const particlePositions = new Float32Array(particleCount * 3);
     const particleColors = new Float32Array(particleCount * 3);
     const particleGeom = new THREE.BufferGeometry();
@@ -82,10 +98,10 @@ const KineticEnergyShader = () => {
     particleGeom.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: 0.015,
+      size: 0.02,
       blending: THREE.AdditiveBlending,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.8,
       vertexColors: true,
     });
 
@@ -185,16 +201,16 @@ const KineticEnergyShader = () => {
         trail.geometry.attributes.position.needsUpdate = true;
 
         // Animate opacity based on idle state
-        const mat = trail.line.material as THREE.LineBasicMaterial;
-        mat.opacity = idle ? 0.85 : 0.6;
+      const mat = trail.line.material as THREE.LineBasicMaterial;
+        mat.opacity = idle ? 0.95 : 0.75;
       }
 
       // Update particles around the cursor
       for (let i = 0; i < particleCount; i++) {
         const angle = (i / particleCount) * Math.PI * 2 + t * 2.0 + Math.sin(i) * 0.5;
         const dist = idle
-          ? 0.04 + 0.12 * Math.sin(t * 3 + i * 0.7)
-          : 0.02 + 0.06 * Math.sin(t * 2 + i);
+          ? 0.03 + 0.15 * Math.sin(t * 3 + i * 0.7)
+          : 0.02 + 0.08 * Math.sin(t * 2 + i);
         particlePositions[i * 3] = mouseRef.current.x + Math.cos(angle) * dist;
         particlePositions[i * 3 + 1] = mouseRef.current.y + Math.sin(angle) * dist;
         particlePositions[i * 3 + 2] = 0;
@@ -207,7 +223,7 @@ const KineticEnergyShader = () => {
       particleGeom.attributes.position.needsUpdate = true;
       particleGeom.attributes.color.needsUpdate = true;
 
-      particleMat.opacity = idle ? 0.9 : 0.5;
+      particleMat.opacity = idle ? 1.0 : 0.6;
 
       renderer.render(scene, camera);
     };
