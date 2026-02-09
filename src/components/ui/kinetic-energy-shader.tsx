@@ -1,5 +1,9 @@
 import { useEffect, useRef, useCallback } from 'react';
 import * as THREE from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 const TRAIL_COUNT = 7;
 const TRAIL_LENGTH = 40;
@@ -41,6 +45,18 @@ const KineticEnergyShader = () => {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setClearColor(0x000000, 1);
     container.appendChild(renderer.domElement);
+
+    // Post-processing bloom
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(container.clientWidth, container.clientHeight),
+      1.8,   // strength
+      0.4,   // radius
+      0.2    // threshold
+    );
+    composer.addPass(bloomPass);
+    composer.addPass(new OutputPass());
 
     // Create trails
     const trails: {
@@ -125,6 +141,7 @@ const KineticEnergyShader = () => {
       const w = container.clientWidth;
       const h = container.clientHeight;
       renderer.setSize(w, h);
+      composer.setSize(w, h);
       const a = w / h;
       camera.left = -a;
       camera.right = a;
@@ -225,7 +242,7 @@ const KineticEnergyShader = () => {
 
       particleMat.opacity = idle ? 1.0 : 0.6;
 
-      renderer.render(scene, camera);
+      composer.render();
     };
 
     animate();
