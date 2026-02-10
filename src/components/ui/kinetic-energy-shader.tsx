@@ -14,13 +14,13 @@ const IDLE_BLEND_SPEED = 1.8; // how fast we transition to/from idle
 
 // Interpolated palette: Red → Orange → Yellow → Gold with greens/pinks for vibrancy
 const COLORS = [
-  new THREE.Color('#FF0030'),
-  new THREE.Color('#FF1500'),
+  new THREE.Color('#FF0020'),
+  new THREE.Color('#FF0000'),
+  new THREE.Color('#CC0000'),
+  new THREE.Color('#FF2200'),
+  new THREE.Color('#FF1000'),
   new THREE.Color('#FF4400'),
-  new THREE.Color('#FF6600'),
-  new THREE.Color('#FF8800'),
-  new THREE.Color('#FFAA00'),
-  new THREE.Color('#FF0060'),
+  new THREE.Color('#FF0033'),
 ];
 
 const KineticEnergyShader = () => {

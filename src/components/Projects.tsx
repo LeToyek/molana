@@ -4,7 +4,7 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  span: string; // grid span class
+  span: string;
 }
 
 const PROJECTS: Project[] = [
@@ -34,24 +34,24 @@ const PROJECTS: Project[] = [
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
-      className={`group relative flex flex-col justify-end overflow-hidden border border-border bg-card p-6 transition-all duration-500 hover:border-primary/50 sm:p-8 ${project.span}`}
+      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl transition-all duration-500 hover:border-primary/30 hover:bg-black/50 sm:p-8 ${project.span}`}
       style={{
         minHeight: project.span.includes('row-span-2') ? '420px' : '220px',
       }}
     >
       {/* Glow effect on hover */}
-      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: 'radial-gradient(ellipse at 50% 100%, hsl(0 100% 59% / 0.06), transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 100%, hsl(0 100% 59% / 0.08), transparent 70%)',
         }}
       />
 
       {/* Index number */}
-      <span className="absolute right-6 top-6 font-serif text-6xl font-black text-foreground/[0.04] transition-colors duration-500 group-hover:text-primary/10 sm:text-7xl">
+      <span className="absolute right-6 top-6 font-serif text-6xl font-black text-white/[0.04] transition-colors duration-500 group-hover:text-primary/10 sm:text-7xl">
         {String(PROJECTS.indexOf(project) + 1).padStart(2, '0')}
       </span>
 
-      {/* Content — revealed on hover on desktop, always visible on mobile */}
+      {/* Content */}
       <div className="relative z-10">
         <h3 className="font-serif text-2xl font-bold tracking-tight sm:text-3xl">
           {project.title}
@@ -63,7 +63,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="border border-border px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-colors duration-300 group-hover:border-primary/30 group-hover:text-primary"
+              className="rounded-md border border-white/10 bg-white/5 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-colors duration-300 group-hover:border-primary/30 group-hover:text-primary"
             >
               {tag}
             </span>

@@ -12,17 +12,7 @@ const Hero = () => {
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-      {/* Subtle grid background */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
-
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 w-full max-w-4xl rounded-2xl border border-white/10 bg-black/40 p-8 backdrop-blur-xl sm:p-12 lg:p-16">
         {/* Overline */}
         <p
           className={`mb-6 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground transition-all duration-700 ${
@@ -65,7 +55,7 @@ const Hero = () => {
             ref={btnRef as React.Ref<HTMLAnchorElement>}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="inline-block border border-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary transition-colors duration-300 hover:bg-primary hover:text-primary-foreground"
+            className="inline-block rounded-lg border border-primary/50 bg-primary/10 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
           >
             View the Blend
           </a>
@@ -74,7 +64,7 @@ const Hero = () => {
 
       {/* Large decorative number */}
       <span
-        className={`pointer-events-none absolute -right-10 bottom-10 select-none font-serif text-[12rem] font-black leading-none text-foreground/[0.02] sm:text-[20rem] lg:text-[28rem] transition-all duration-1000 delay-500 ${
+        className={`pointer-events-none absolute -right-10 bottom-10 select-none font-serif text-[12rem] font-black leading-none text-white/[0.02] sm:text-[20rem] lg:text-[28rem] transition-all duration-1000 delay-500 ${
           loaded ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
         }`}
       >
