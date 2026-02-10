@@ -42,7 +42,7 @@ const TechMarquee = () => {
   return (
     <section
       ref={ref}
-      className={`overflow-hidden border-y border-border py-10 transition-all duration-700 ${
+      className={`overflow-hidden border-y border-white/10 bg-black/30 py-10 backdrop-blur-lg transition-all duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >

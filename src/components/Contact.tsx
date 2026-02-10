@@ -9,10 +9,10 @@ const Contact = () => {
   return (
     <section
       ref={sectionRef}
-      className="border-t border-border px-6 py-24 sm:py-32"
+      className="px-6 py-24 sm:py-32"
     >
       <div
-        className={`mx-auto max-w-3xl text-center transition-all duration-700 ${
+        className={`mx-auto max-w-3xl rounded-2xl border border-white/10 bg-black/40 p-8 text-center backdrop-blur-xl sm:p-12 transition-all duration-700 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}
       >
@@ -36,7 +36,7 @@ const Contact = () => {
             ref={btnRef as React.Ref<HTMLAnchorElement>}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="inline-block border border-primary bg-primary px-10 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-transparent hover:text-primary"
+            className="inline-block rounded-lg border border-primary/50 bg-primary/10 px-10 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
           >
             Start a Conversation
           </a>
@@ -44,41 +44,30 @@ const Contact = () => {
 
         {/* Socials */}
         <div
-          className={`mt-16 flex items-center justify-center gap-8 transition-all duration-700 delay-200 ${
+          className={`mt-16 flex items-center justify-center gap-4 transition-all duration-700 delay-200 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors duration-300 hover:text-primary"
-            aria-label="GitHub"
-          >
-            <Github size={20} />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors duration-300 hover:text-primary"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors duration-300 hover:text-primary"
-            aria-label="X / Twitter"
-          >
-            <Twitter size={20} />
-          </a>
+          {[
+            { icon: Github, href: 'https://github.com', label: 'GitHub' },
+            { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+            { icon: Twitter, href: 'https://twitter.com', label: 'X / Twitter' },
+          ].map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-muted-foreground transition-all duration-300 hover:border-primary/30 hover:bg-primary/10 hover:text-primary"
+              aria-label={link.label}
+            >
+              <link.icon size={18} />
+            </a>
+          ))}
         </div>
 
         {/* Footer line */}
-        <p className="mt-16 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/50">
+        <p className="mt-12 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/50">
           Brewed with precision · © 2026
         </p>
       </div>
