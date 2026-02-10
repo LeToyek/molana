@@ -6,20 +6,20 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 const TRAIL_COUNT = 7;
-const TRAIL_LENGTH = 40;
-const LERP_BASE = 0.12;
-const SWIRL_RADIUS = 0.12;
-const SWIRL_SPEED = 3.5;
+const TRAIL_LENGTH = 30;
+const LERP_BASE = 0.22;
+const SWIRL_RADIUS = 0.15;
+const SWIRL_SPEED = 4.5;
 
 // Interpolated palette: Red → Orange → Yellow → Gold with greens/pinks for vibrancy
 const COLORS = [
-  new THREE.Color('#FF0040'),
-  new THREE.Color('#FF3300'),
+  new THREE.Color('#FF0030'),
+  new THREE.Color('#FF1500'),
+  new THREE.Color('#FF4400'),
   new THREE.Color('#FF6600'),
+  new THREE.Color('#FF8800'),
   new THREE.Color('#FFAA00'),
-  new THREE.Color('#FFD700'),
-  new THREE.Color('#00FF88'),
-  new THREE.Color('#FF00AA'),
+  new THREE.Color('#FF0060'),
 ];
 
 const KineticEnergyShader = () => {
@@ -51,9 +51,9 @@ const KineticEnergyShader = () => {
     composer.addPass(new RenderPass(scene, camera));
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(container.clientWidth, container.clientHeight),
-      1.8,   // strength
-      0.4,   // radius
-      0.2    // threshold
+      2.2,   // strength - more intense
+      0.5,   // radius
+      0.15   // threshold - lower for more glow
     );
     composer.addPass(bloomPass);
     composer.addPass(new OutputPass());
@@ -171,8 +171,8 @@ const KineticEnergyShader = () => {
       prevMouseRef.current.y = targetRef.current.y;
 
       // Lerp mouse towards target
-      mouseRef.current.x += (targetRef.current.x - mouseRef.current.x) * 0.12;
-      mouseRef.current.y += (targetRef.current.y - mouseRef.current.y) * 0.12;
+      mouseRef.current.x += (targetRef.current.x - mouseRef.current.x) * 0.22;
+      mouseRef.current.y += (targetRef.current.y - mouseRef.current.y) * 0.22;
 
       const t = timeRef.current;
       const idle = isIdleRef.current;
@@ -189,10 +189,13 @@ const KineticEnergyShader = () => {
         let headY = mouseRef.current.y;
 
         if (idle) {
-          const swirlAngle = t * SWIRL_SPEED * (1 + ti * 0.4) + phase;
-          const r = SWIRL_RADIUS * (0.5 + 0.5 * Math.sin(t * 1.5 + phase));
-          headX += Math.cos(swirlAngle) * r;
-          headY += Math.sin(swirlAngle) * r;
+          // Complex Lissajous / figure-8 pattern with pulsing radius
+          const baseAngle = t * SWIRL_SPEED * (1 + ti * 0.3) + phase;
+          const r = SWIRL_RADIUS * (0.4 + 0.6 * Math.sin(t * 1.8 + phase));
+          const freqX = 2 + Math.sin(ti * 0.7) * 0.5;
+          const freqY = 3 + Math.cos(ti * 0.5) * 0.5;
+          headX += Math.cos(baseAngle * freqX) * r + Math.sin(t * 2.5 + phase) * r * 0.3;
+          headY += Math.sin(baseAngle * freqY) * r + Math.cos(t * 1.7 + phase) * r * 0.4;
         } else {
           // Spread trails slightly based on velocity
           const spread = 0.08 * (ti - TRAIL_COUNT / 2);
