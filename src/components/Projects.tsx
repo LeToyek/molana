@@ -9,24 +9,24 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    title: 'Pulse API',
+    title: 'Manufacturing Analytics',
     description:
-      'A high-throughput REST & GraphQL API gateway handling 50k+ requests/sec. Built with Go microservices, Redis caching, and Kubernetes orchestration.',
-    tags: ['Go', 'GraphQL', 'Redis', 'K8s'],
+      'Predictive analytics system for manufacturing processes. Reduced loss opportunities by IDR 600M+ through data-driven insights and real-time monitoring dashboards.',
+    tags: ['Python', 'FastAPI', 'React', 'PostgreSQL'],
     span: 'md:col-span-2 md:row-span-2',
   },
   {
-    title: 'Vortex Dashboard',
+    title: 'RAG Chatbot',
     description:
-      'Real-time analytics dashboard with WebSocket-driven live updates, complex data visualizations, and role-based access control.',
-    tags: ['React', 'TypeScript', 'WebSockets', 'PostgreSQL'],
+      'Retrieval-Augmented Generation chatbot for enterprise knowledge bases. Built with LangChain and vector embeddings for accurate, contextual responses.',
+    tags: ['Python', 'LangChain', 'RAG', 'Vector DB'],
     span: 'md:col-span-1 md:row-span-1',
   },
   {
-    title: 'Forge CLI',
+    title: 'Delta HQ Platform',
     description:
-      'A developer-first CLI tool for scaffolding, deploying, and managing fullstack applications with one command.',
-    tags: ['Rust', 'Docker', 'CI/CD'],
+      'Backend architecture for a Japanese SaaS startup. Scalable microservices handling operational workflows for growing enterprise clients.',
+    tags: ['Go', 'NestJS', '.NET', 'Docker'],
     span: 'md:col-span-1 md:row-span-1',
   },
 ];
@@ -34,26 +34,23 @@ const PROJECTS: Project[] = [
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div
-      className={`group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl transition-all duration-500 hover:border-primary/30 hover:bg-black/50 sm:p-8 ${project.span}`}
+      className={`group relative flex flex-col justify-end overflow-hidden glass-card p-6 transition-all duration-500 hover:border-primary/30 sm:p-8 ${project.span}`}
       style={{
         minHeight: project.span.includes('row-span-2') ? '420px' : '220px',
       }}
     >
-      {/* Glow effect on hover */}
       <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: 'radial-gradient(ellipse at 50% 100%, hsl(0 100% 59% / 0.08), transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 100%, hsl(215 100% 55% / 0.08), transparent 70%)',
         }}
       />
 
-      {/* Index number */}
-      <span className="absolute right-6 top-6 font-serif text-6xl font-black text-white/[0.04] transition-colors duration-500 group-hover:text-primary/10 sm:text-7xl">
+      <span className="absolute right-6 top-6 text-6xl font-bold text-foreground/[0.04] transition-colors duration-500 group-hover:text-primary/10 sm:text-7xl">
         {String(PROJECTS.indexOf(project) + 1).padStart(2, '0')}
       </span>
 
-      {/* Content */}
       <div className="relative z-10">
-        <h3 className="font-serif text-2xl font-bold tracking-tight sm:text-3xl">
+        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
           {project.title}
         </h3>
         <p className="mt-3 max-w-md font-mono text-xs leading-relaxed text-muted-foreground opacity-100 transition-all duration-500 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 sm:text-sm">
@@ -63,7 +60,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-white/10 bg-white/5 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-colors duration-300 group-hover:border-primary/30 group-hover:text-primary"
+              className="rounded-md border border-border/50 bg-muted/30 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground transition-colors duration-300 group-hover:border-primary/30 group-hover:text-primary"
             >
               {tag}
             </span>
@@ -89,10 +86,10 @@ const Projects = () => {
         }`}
       >
         <p className="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          The Collection
+          Selected Work
         </p>
-        <h2 className="mb-12 font-serif text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-          Selected <span className="text-primary">Work</span>
+        <h2 className="mb-12 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          Featured <span className="text-primary">Projects</span>
         </h2>
       </div>
 
