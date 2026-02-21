@@ -1,13 +1,13 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const TECH_ROW_1 = [
-  'Go', 'NestJS', 'PostgreSQL', 'Docker', 'TypeScript', 'React', 'Redis', 'AWS',
-  'GraphQL', 'Kubernetes', 'Node.js', 'Terraform',
+  'Go', 'NestJS', '.NET', 'Laravel', 'React', 'Python', 'TypeScript',
+  'PostgreSQL', 'Docker', 'Redis', 'GraphQL', 'Kubernetes',
 ];
 
 const TECH_ROW_2 = [
-  'Python', 'MongoDB', 'gRPC', 'Kafka', 'Next.js', 'Prisma', 'Nginx', 'CI/CD',
-  'Elasticsearch', 'RabbitMQ', 'Rust', 'Linux',
+  'RAG', 'LangChain', 'FastAPI', 'Node.js', 'Next.js', 'Prisma',
+  'MongoDB', 'Kafka', 'CI/CD', 'Linux', 'gRPC', 'Terraform',
 ];
 
 const MarqueeRow = ({
@@ -42,12 +42,12 @@ const TechMarquee = () => {
   return (
     <section
       ref={ref}
-      className={`overflow-hidden border-y border-white/10 bg-black/30 py-10 backdrop-blur-lg transition-all duration-700 ${
+      className={`overflow-hidden border-y border-border/50 bg-card/30 py-10 backdrop-blur-lg transition-all duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
       <p className="mb-8 text-center font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-        The Roast Profile
+        Tech Stack
       </p>
       <MarqueeRow items={TECH_ROW_1} />
       <MarqueeRow items={TECH_ROW_2} reverse />
