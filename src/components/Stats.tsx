@@ -22,8 +22,8 @@ const CountUpStat = ({
 const STATS = [
   {
     icon: TrendingUp,
-    value: <CountUpStat target={600} prefix="IDR " suffix="M+" />,
-    label: 'Saved for Manufacturing Client',
+    value: <CountUpStat target={40} prefix="$" suffix="K+" />,
+    label: 'Generated for Manufacturing Client',
     description: 'Built predictive analytics and real-time monitoring that identified loss patterns before they escalated.',
     span: 'md:col-span-2 md:row-span-2',
   },
@@ -114,7 +114,7 @@ const Stats = () => {
               <h3 className="mt-2 text-lg font-semibold tracking-tight">
                 {stat.label}
               </h3>
-              <p className="mt-2 max-w-md font-mono text-xs leading-relaxed text-muted-foreground sm:text-sm">
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
                 {stat.description}
               </p>
             </div>

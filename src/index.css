@@ -20,7 +20,7 @@
     --secondary-foreground: 0 0% 10%;
 
     --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 35%;
 
     --accent: 215 100% 55%;
     --accent-foreground: 0 0% 100%;
@@ -95,10 +95,16 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
+  }
+
+  html:not(.dark) body {
+    background: radial-gradient(circle at 50% 0%, hsl(0 0% 99%) 0%, hsl(215 15% 94%) 100%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-foreground;
     font-family: 'Space Grotesk', sans-serif;
   }
 

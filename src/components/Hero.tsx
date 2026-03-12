@@ -4,10 +4,10 @@ import { useTypingEffect } from '@/hooks/useTypingEffect';
 import { ArrowDown, Send } from 'lucide-react';
 
 const TYPING_WORDS = [
-  'Scalable Backends',
-  'AI-Powered Solutions',
-  'Production-Grade Apps',
-  'Real-Time Systems',
+  'High-Performance Backends',
+  'Scalable SaaS Platforms',
+  'AI-Driven Workflows',
+  'Robust APIs',
 ];
 
 const Hero = () => {
@@ -25,7 +25,7 @@ const Hero = () => {
     <section aria-label="Hero" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       <div className="relative z-10 w-full max-w-4xl glass-card p-8 sm:p-12 lg:p-16">
         <p
-          className={`mb-6 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground transition-all duration-700 ${
+          className={`mb-6 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-all duration-700 ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
@@ -40,17 +40,17 @@ const Hero = () => {
         >
           Maulana
           <br />
-          <span className="text-primary">Arif Wijaya</span>
+          <span className="text-primary">Arif</span>
         </h1>
 
         <p
-          className={`mt-8 max-w-lg font-mono text-sm leading-relaxed text-muted-foreground sm:text-base transition-all duration-700 delay-300 ${
+          className={`mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground transition-all duration-700 delay-300 ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          Backend Engineer at Delta HQ (Japan) · 10+ Enterprise Projects
+          I help businesses scale with resilient architecture and automation.
           <br />
-          <span className="text-primary font-medium">IDR 600M+ in measurable client savings</span>
+          <span className="text-foreground font-medium">Delivered 10+ enterprise projects generating $40,000+ in ROI.</span>
         </p>
 
         <div

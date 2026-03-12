@@ -12,6 +12,7 @@ import FloatingCTA from '@/components/FloatingCTA';
 import CursorTrail from '@/components/CursorTrail';
 import ThemeToggle from '@/components/ThemeToggle';
 import { useTheme } from '@/hooks/useTheme';
+import { FloatingPaths } from '@/components/ui/background-paths';
 
 const KineticEnergyShader = lazy(() => import('@/components/ui/kinetic-energy-shader'));
 
@@ -25,7 +26,13 @@ const Index = () => {
           <KineticEnergyShader />
         </Suspense>
       ) : (
-        <CursorTrail />
+        <>
+          <CursorTrail />
+          <div className="fixed inset-0 z-0 pointer-events-none opacity-60">
+            <FloatingPaths position={1} />
+            <FloatingPaths position={-1} />
+          </div>
+        </>
       )}
       <Navbar />
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />

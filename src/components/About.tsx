@@ -49,17 +49,17 @@ const About = () => {
       >
         {/* Narrative */}
         <div className="space-y-6">
-          <p className="font-mono text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="text-lg leading-relaxed text-muted-foreground">
             I'm a fullstack developer with a deep focus on backend architecture and AI integration.
-            My work isn't about writing clever code — it's about solving real business problems
-            that move the needle for clients.
+            My work isn't about writing clever code it's about solving real business problems
+            that drive measurable outcomes for clients.
           </p>
-          <p className="font-mono text-sm leading-relaxed text-muted-foreground sm:text-base">
-            From building predictive analytics that saved a manufacturing client IDR 600M+ to
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            From building predictive analytics that generated $40,000+ in value for a manufacturing client to
             engineering zero-downtime migrations for a Japanese SaaS platform, I bring the same
-            principle to every project: <span className="text-foreground font-medium">ship reliable systems that create measurable impact.</span>
+            principle to every project: <span className="text-foreground font-medium">ship reliable systems that deliver impact.</span>
           </p>
-          <p className="font-mono text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="text-lg leading-relaxed text-muted-foreground">
             Currently working as a Backend Engineer at Delta HQ, where I build property management
             systems with real-time OTA integrations for global platforms like Rakuten and Airbnb.
           </p>

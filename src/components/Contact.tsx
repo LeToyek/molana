@@ -59,13 +59,13 @@ const Contact = () => {
             Get In Touch
           </p>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Have a project that needs
+            Looking for a reliable
             <br />
-            <span className="text-primary">senior-level engineering?</span>
+            <span className="text-primary">technical partner?</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-lg font-mono text-sm leading-relaxed text-muted-foreground">
-            I help startups and enterprises build scalable backends, AI-powered tools,
-            and production-grade applications. Response time: under 24 hours.
+          <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+            I help clients build scalable backends, AI integrations,
+            and production-grade products that deliver real value. Response time: under 24 hours.
           </p>
         </div>
 
@@ -222,7 +222,7 @@ const Contact = () => {
         </div>
 
         <p className="mt-8 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/50">
-          Crafted with precision · Maulana Arif Wijaya · 2026
+          Crafted with precision · Maulana Arif · 2026
         </p>
       </div>
     </section>
