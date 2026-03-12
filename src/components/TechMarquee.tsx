@@ -41,6 +41,7 @@ const TechMarquee = () => {
 
   return (
     <section
+      aria-label="Tech Stack"
       ref={ref}
       className={`overflow-hidden border-y border-border/50 bg-card/30 py-10 backdrop-blur-lg transition-all duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'

@@ -1,10 +1,14 @@
-import KineticEnergyShader from '@/components/ui/kinetic-energy-shader';
+import { lazy, Suspense } from 'react';
 import { Github, Linkedin, Mail, Sparkles, Zap } from 'lucide-react';
+
+const KineticEnergyShader = lazy(() => import('@/components/ui/kinetic-energy-shader'));
 
 const KineticDemo = () => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background">
-      <KineticEnergyShader />
+      <Suspense fallback={null}>
+        <KineticEnergyShader />
+      </Suspense>
 
       {/* Glass card overlay */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4">

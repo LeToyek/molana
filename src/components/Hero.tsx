@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useMagneticButton } from '@/hooks/useMagneticButton';
-import { ArrowDown } from 'lucide-react';
+import { useTypingEffect } from '@/hooks/useTypingEffect';
+import { ArrowDown, Send } from 'lucide-react';
+
+const TYPING_WORDS = [
+  'Scalable Backends',
+  'AI-Powered Solutions',
+  'Production-Grade Apps',
+  'Real-Time Systems',
+];
 
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
-  const { ref: btnRef, handleMouseMove, handleMouseLeave } = useMagneticButton(0.35);
+  const { ref: exploreBtnRef, handleMouseMove: exploreMove, handleMouseLeave: exploreLeave } = useMagneticButton(0.35);
+  const { ref: hireBtnRef, handleMouseMove: hireMove, handleMouseLeave: hireLeave } = useMagneticButton(0.35);
+  const typedText = useTypingEffect(TYPING_WORDS, 80, 50, 2000);
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 100);
@@ -12,14 +22,15 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+    <section aria-label="Hero" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       <div className="relative z-10 w-full max-w-4xl glass-card p-8 sm:p-12 lg:p-16">
         <p
           className={`mb-6 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground transition-all duration-700 ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          Fullstack Web Developer &amp; AI Enthusiast
+          I build <span className="text-primary">{typedText}</span>
+          <span className="animate-pulse text-primary">|</span>
         </p>
 
         <h1
@@ -37,21 +48,31 @@ const Hero = () => {
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          Best Informatics Engineering Graduate · Politeknik Negeri Malang
+          Backend Engineer at Delta HQ (Japan) · 10+ Enterprise Projects
           <br />
-          <span className="text-foreground/70">Backend Engineer at Delta HQ — Japanese SaaS Startup</span>
+          <span className="text-primary font-medium">IDR 600M+ in measurable client savings</span>
         </p>
 
         <div
-          className={`mt-12 flex items-center gap-4 transition-all duration-700 delay-[450ms] ${
+          className={`mt-12 flex flex-wrap items-center gap-4 transition-all duration-700 delay-500 ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
           <a
+            href="#contact"
+            ref={hireBtnRef as React.Ref<HTMLAnchorElement>}
+            onMouseMove={hireMove}
+            onMouseLeave={hireLeave}
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+          >
+            <Send size={14} />
+            Hire Me
+          </a>
+          <a
             href="#stats"
-            ref={btnRef as React.Ref<HTMLAnchorElement>}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            ref={exploreBtnRef as React.Ref<HTMLAnchorElement>}
+            onMouseMove={exploreMove}
+            onMouseLeave={exploreLeave}
             className="inline-flex items-center gap-2 rounded-lg border border-primary/50 bg-primary/10 px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
           >
             Explore Work
