@@ -34,24 +34,34 @@ const Hero = () => {
         </p>
 
         <h1
-          className={`text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl lg:text-8xl transition-all duration-700 delay-150 ${
+          className={`max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl transition-all duration-700 delay-150 ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          Maulana
+          Build SaaS Platforms That Scale.
           <br />
-          <span className="text-primary">Arif</span>
+          <span className="text-primary">Integrate AI That Works.</span>
         </h1>
 
         <p
-          className={`mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground transition-all duration-700 delay-300 ${
+          className={`mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground transition-all duration-700 delay-300 ${
             loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          I help businesses scale with resilient architecture and automation.
-          <br />
-          <span className="text-foreground font-medium">Delivered 10+ enterprise projects generating $40,000+ in ROI.</span>
+          Fullstack developer specializing in Go, React, and AI solutions. I've helped 10+ enterprises reduce infrastructure costs and unlock new revenue through intelligent automation.
         </p>
+
+        <div
+          className={`mt-6 flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-widest text-foreground/80 transition-all duration-700 delay-400 ${
+            loaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+          }`}
+        >
+          <span className="border-b border-primary/30 pb-0.5">$40K+ ROI Generated</span>
+          <span className="text-primary/50">•</span>
+          <span className="border-b border-primary/30 pb-0.5">100K+ Records Processed</span>
+          <span className="text-primary/50">•</span>
+          <span className="border-b border-primary/30 pb-0.5">Backend Engineer at Japanese SaaS</span>
+        </div>
 
         <div
           className={`mt-12 flex flex-wrap items-center gap-4 transition-all duration-700 delay-500 ${
@@ -63,10 +73,10 @@ const Hero = () => {
             ref={hireBtnRef as React.Ref<HTMLAnchorElement>}
             onMouseMove={hireMove}
             onMouseLeave={hireLeave}
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-4 font-mono text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.2em] text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
           >
             <Send size={14} />
-            Hire Me
+            Book a Free Architecture Review
           </a>
           <a
             href="#stats"

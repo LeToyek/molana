@@ -4,8 +4,8 @@ import { Server, Brain, Layers } from 'lucide-react';
 const SERVICES = [
   {
     icon: Server,
-    title: 'Backend Development',
-    description: 'Scalable APIs, microservices, and database architecture built for production.',
+    title: 'Scalable Backend Architecture',
+    description: 'Build systems that handle 10x growth without 10x costs.',
     bullets: [
       'Go, NestJS, .NET, Laravel',
       'RESTful & gRPC API design',
@@ -15,8 +15,8 @@ const SERVICES = [
   },
   {
     icon: Brain,
-    title: 'AI / ML Solutions',
-    description: 'Intelligent systems that automate workflows and unlock insights from data.',
+    title: 'AI Integration That Delivers ROI',
+    description: 'RAG chatbots, predictive analytics, and document processing built for production.',
     bullets: [
       'RAG chatbots & LLM integration',
       'Predictive analytics & forecasting',
@@ -26,8 +26,8 @@ const SERVICES = [
   },
   {
     icon: Layers,
-    title: 'Full Product Development',
-    description: 'End-to-end from architecture to deployment — web and mobile.',
+    title: 'End-to-End Product Development',
+    description: 'From architecture to deployment, I build complete solutions that generate revenue.',
     bullets: [
       'React, Next.js, Angular frontends',
       'Flutter mobile applications',
@@ -92,9 +92,9 @@ const Services = () => {
 
             <a
               href="#contact"
-              className="mt-auto inline-flex w-full items-center justify-center rounded-lg border border-primary/30 bg-primary/5 py-3 font-mono text-xs uppercase tracking-[0.15em] text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+              className="mt-auto inline-flex w-full items-center justify-center rounded-lg border border-primary/30 bg-primary/5 py-3 font-mono text-[10px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.15em] text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
             >
-              Discuss Your Project
+              Get a Custom Solution Roadmap
             </a>
           </div>
         ))}

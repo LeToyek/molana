@@ -63,6 +63,15 @@ const Contact = () => {
             <br />
             <span className="text-primary">technical partner?</span>
           </h2>
+
+          <div className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 font-mono text-[10px] sm:text-xs text-primary shadow-sm backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+            </span>
+            <span><strong className="font-bold">Limited capacity for Q2 2026</strong> — Let's discuss your timeline.</span>
+          </div>
+
           <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
             I help clients build scalable backends, AI integrations,
             and production-grade products that deliver real value. Response time: under 24 hours.
@@ -117,9 +126,9 @@ const Contact = () => {
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="backend">Backend Development</SelectItem>
-                    <SelectItem value="ai">AI / ML Solution</SelectItem>
-                    <SelectItem value="fullstack">Full Product Development</SelectItem>
+                    <SelectItem value="backend">Scalable Backend Architecture</SelectItem>
+                    <SelectItem value="ai">AI Integration</SelectItem>
+                    <SelectItem value="fullstack">End-to-End Product</SelectItem>
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
