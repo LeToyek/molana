@@ -12,6 +12,7 @@ export interface Project {
   tags: string[];
   featured: boolean;
   image?: string;
+  previews?: string[];
   liveLink?: string;
 }
 
@@ -31,7 +32,12 @@ export const PROJECTS: Project[] = [
       'Currently deployed and serving as the primary management interface for enterprise-level operations, significantly improving decision-making speed and operational visibility.',
     tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
     featured: true,
-    image: '/images/dashboards-preview.png',
+    image: '/images/projects/mega-dashboards/thumb.png',
+    previews: [
+      '/images/projects/mega-dashboards/preview1.png',
+      '/images/projects/mega-dashboards/preview2.png',
+      '/images/projects/mega-dashboards/preview3.png',
+    ],
     liveLink: 'https://dashboards.molana.my.id',
   },
   {
@@ -49,7 +55,12 @@ export const PROJECTS: Project[] = [
       'Successfully deployed for live operations, achieving high performance and providing a unified command center for margin management.',
     tags: ['Vite', 'React', 'Bun', 'Nginx'],
     featured: true,
-    image: '/images/landings-preview.png',
+    image: '/images/projects/omni-commerce/thumb.png',
+    previews: [
+      '/images/projects/omni-commerce/preview1.png',
+      '/images/projects/omni-commerce/preview2.png',
+      '/images/projects/omni-commerce/preview3.png',
+    ],
     liveLink: 'https://landings.molana.my.id',
   },
   {
