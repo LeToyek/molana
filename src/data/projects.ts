@@ -11,9 +11,47 @@ export interface Project {
   result: string;
   tags: string[];
   featured: boolean;
+  image?: string;
+  liveLink?: string;
 }
 
 export const PROJECTS: Project[] = [
+  {
+    id: 'mega-dashboards',
+    title: 'Mega Dashboard',
+    subtitle: 'Enterprise Analytics & Management Platform',
+    category: 'fullstack',
+    description:
+      'A massive enterprise dashboard designed to handle multi-store management and complex data analytics. It serves as the central command center for large-scale operations with real-time performance tracking.',
+    challenge:
+      'The need for a unified platform to manage complex enterprise data across multiple stores while maintaining high performance and real-time synchronization.',
+    approach:
+      'Engineered with a high-performance frontend and a robust backend integration. Implemented real-time data visualization and a scalable architecture to handle massive concurrent data streams.',
+    result:
+      'Currently deployed and serving as the primary management interface for enterprise-level operations, significantly improving decision-making speed and operational visibility.',
+    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+    featured: true,
+    image: '/images/dashboards-preview.png',
+    liveLink: 'https://dashboards.molana.my.id',
+  },
+  {
+    id: 'margin-maestro',
+    title: 'Omni Commerce',
+    subtitle: 'Enterprise Landing & Margin Optimizer',
+    category: 'fullstack',
+    description:
+      'A high-performance landing platform for multi-store management, specifically designed to stop revenue loss from manual operations. Integrated with real-time margin tracking and TikTok Shop Partner (TSP) capabilities.',
+    challenge:
+      'The need for a high-converting landing environment that could handle multiple business units with real-time performance tracking.',
+    approach:
+      'Built with Vite and Bun for speed, focusing on core web vitals. Integrated real-time conversion tracking and margin optimization tools.',
+    result:
+      'Successfully deployed for live operations, achieving high performance and providing a unified command center for margin management.',
+    tags: ['Vite', 'React', 'Bun', 'Nginx'],
+    featured: true,
+    image: '/images/landings-preview.png',
+    liveLink: 'https://landings.molana.my.id',
+  },
   {
     id: 'manufacturing-analytics',
     title: 'Manufacturing Analytics',
