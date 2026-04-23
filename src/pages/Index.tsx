@@ -8,7 +8,6 @@ import Stats from '@/components/Stats';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import FloatingCTA from '@/components/FloatingCTA';
-import CursorTrail from '@/components/CursorTrail';
 import ThemeToggle from '@/components/ThemeToggle';
 import { useTheme } from '@/hooks/useTheme';
 
@@ -19,12 +18,10 @@ const Index = () => {
 
   return (
     <main className="relative min-h-screen text-foreground">
-      {theme === 'dark' ? (
+      {theme === 'dark' && (
         <Suspense fallback={null}>
           <KineticEnergyShader />
         </Suspense>
-      ) : (
-        <CursorTrail />
       )}
       <Navbar />
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
