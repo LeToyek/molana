@@ -8,7 +8,9 @@
       "Bash(npm run:*)",
       "Bash(npx vite:*)",
       "Bash(find /c/projects/molana/public/images -type f -exec ls -lh {} \\\\;)",
-      "Bash(awk '{print $5, $9}')"
+      "Bash(awk '{print $5, $9}')",
+      "Bash(node:*)",
+      "Bash(bun run:*)"
     ]
   }
 }
